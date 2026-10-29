@@ -79,7 +79,11 @@ h2{font:700 1.5rem/1.1 var(--display);margin:0 0 .2rem;padding-top:.6rem;border-
 table{width:100%;border-collapse:collapse;font-size:.95rem}
 th{font:600 .95rem/1.2 var(--display);text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.4rem .5rem .4rem 0}
 td{border-bottom:1px solid var(--rule);padding:.55rem .5rem .55rem 0;vertical-align:top}
-td.sig{font:600 1rem/1.25 var(--display);white-space:nowrap}
+table{table-layout:fixed}
+td,th{overflow-wrap:anywhere}
+td.sig{font:600 1rem/1.25 var(--display);width:38%}
+#slowSec th:nth-child(2),#slowSec td:nth-child(2){width:5.5rem}
+#slowSec th:nth-child(3),#slowSec td:nth-child(3){width:7rem}
 td .note{display:block;color:var(--muted);font-size:.86rem;margin-top:.15rem}
 
 .trend{font:700 1rem/1 var(--display)}

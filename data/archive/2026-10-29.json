@@ -1,0 +1,520 @@
+{
+  "generated_at": "2026-10-29T10:20:00-05:00",
+  "level": 2,
+  "prev_level": null,
+  "headline": "No outage threat today; cyber pressure and fuel costs are the strain",
+  "bottom_line": "Nothing is threatening power, water or communications in Alabama or the wider US right now. The pressure is building around the edges: AI is finding software flaws faster than they can be patched, a cyberattack this month remotely spoiled food in 500+ French supermarkets, diesel sits near record prices with the Iran war unresolved, and a historic El Niño points to an ice-prone Alabama winter.",
+  "change_reason": "First report. Guarded rather than Elevated because there has been no confirmed disruptive attack on US power, water, telecom, fuel or payments this month, no federal emergency directive, and every Alabama hazard reading is at baseline. It sits at the top of Guarded: exploitation of the PHP flaws is confirmed and widespread, and the French refrigeration attack shows essential-service sabotage is already happening in allied countries.",
+  "actions": [
+    "Keep vehicle tanks at half or more. Fuel is expensive and tight, and pumps don't work in an outage.",
+    "Build or top off three days of basics while it's calm and cheap: a gallon of water per person per day (plus some for pets), food that needs no cooking, and any daily medications.",
+    "Keep some cash in small bills. Card readers and ATMs fail when power or internet does.",
+    "Charge a power bank and check you have a battery or crank radio that gets NOAA weather broadcasts.",
+    "Update your phone, computer and router, and turn on two-factor sign-in for bank and email accounts. This month's flaw wave makes unpatched devices the easy target.",
+    "Plan winter heat for a multi-day outage: blankets, a safe backup heat source, and never a generator or grill indoors.",
+    "Keep paper copies of ID, insurance cards and prescriptions; state and county websites may drop offline without warning."
+  ],
+  "sections": [
+    {
+      "domain": "Cyber threats to infrastructure",
+      "summary": "Heavy pressure on websites and IT systems; no confirmed hit on US power, water or telecom this month.",
+      "items": [
+        {
+          "title": "PHP2Shell: two critical flaws in the software behind most websites",
+          "what": "Two remote-takeover flaws in PHP were patched October 21. Attack attempts started October 17, before the fix, and climbed into the millions. CISA confirmed active exploitation on October 26 and ordered federal agencies to patch by today. Censys counts roughly 32 million exposed PHP installations still on vulnerable versions. So far, confirmed break-ins are only on research honeypots (35 shells on October 24); no named utility, hospital or government has confirmed a compromise.",
+          "mechanism": "PHP runs websites and customer portals, not the controls that run the grid or water plants. The realistic path to you: a utility, hospital or county portal is taken over, the attacker steals stored passwords, moves into billing or backup systems, and ransomware knocks out customer service, payments or scheduling for days. One independent forecaster puts 48% odds on that chain hitting a US critical-sector organization by November 8.",
+          "severity": "watch",
+          "confidence": "high",
+          "tier": "1",
+          "as_of": "Oct 29",
+          "sources": [
+            {
+              "title": "Hackread: CISA confirms PHP2Shell exploitation",
+              "url": "https://hackread.com/cisa-confirm-php2shell-exploit-federal-agencies-patch/"
+            },
+            {
+              "title": "noze.it: what is confirmed",
+              "url": "https://www.noze.it/en/insights/php2shell-what-is-confirmed/"
+            },
+            {
+              "title": "The Stack: Sophos and Unit 42 retract early claims",
+              "url": "https://www.thestack.technology/sophos-palo-alto-networks-retract-early-claims-of-php2shell-exploitation-but-attacks-are-starting/"
+            },
+            {
+              "title": "VECTR-CAST 14-day forecast",
+              "url": "https://cyberwarrior76.substack.com/p/vectr-cast-14-day-cyber-threat-forecast-b95"
+            }
+          ]
+        },
+        {
+          "title": "Hackers cooked the food in 500+ French supermarkets",
+          "what": "Around October 11–12, attackers got into internet-exposed Danfoss refrigeration controllers running old firmware and drove fridges and freezers up to 50°C overnight. Intermarché, Coopérative U, Carrefour and Monoprix stores were hit; tonnes of food were thrown out and some equipment caught fire. No one has claimed it and there is no attribution. Researchers count about 2,765 of these controllers reachable online worldwide; the US share is unknown, and CISA has issued no advisory.",
+          "mechanism": "This is a working proof that the grocery cold chain can be sabotaged remotely and at scale. US stores use comparable refrigeration controllers. A copycat here would mean local shortages of fresh and frozen food for days, which is exactly what a shelf-stable pantry covers.",
+          "severity": "watch",
+          "confidence": "high",
+          "tier": "2",
+          "as_of": "Oct 13",
+          "sources": [
+            {
+              "title": "Al Jazeera: why supermarkets became a target",
+              "url": "https://www.aljazeera.com/amp/economy/2026/10/13/french-fridge-fright-why-supermarkets-have-become-target-for-hackers"
+            },
+            {
+              "title": "The Stack: Danfoss vulnerabilities blamed",
+              "url": "https://www.thestack.technology/french-supermarkets-hacked-danfoss-vulnerabilities-blamed/"
+            },
+            {
+              "title": "Tech Insider: 2,765 exposed systems",
+              "url": "https://tech-insider.org/danfoss-supermarket-systems-2765-exposed-2026/"
+            }
+          ]
+        },
+        {
+          "title": "'Black October': AI is finding and weaponizing flaws faster than defenders can patch",
+          "what": "Security researchers are calling this month Black October. New vulnerability disclosures are running at about twice 2025's pace, and Microsoft puts the median time from discovery to working exploit under 24 hours. A China-aligned group (Storm-0940) used an AI agent to hammer more than 2,250 Microsoft 365 customer accounts at up to 2,900 sign-in attempts a minute after stealing a vendor's credentials, reaching privileged access at some in under three hours. Anthropic's security chief warned that things will get a lot worse before they get better.",
+          "mechanism": "The likely effect isn't one big blackout; it's more frequent, shorter failures of digital services (bank apps, hospital portals, government sites, payment processors) as attacks land and as organizations pull systems offline to patch. Each one is survivable; the risk is that several stack up at once.",
+          "severity": "watch",
+          "confidence": "medium",
+          "tier": "2",
+          "as_of": "Oct 29",
+          "sources": [
+            {
+              "title": "Fortune: Black October",
+              "url": "https://fortune.com/2026/10/29/black-october-ai-cyberattacks-hackers-php2shell"
+            },
+            {
+              "title": "The Hacker News: Storm-0940 uses ARTEX AI",
+              "url": "https://thehackernews.com/2026/10/china-linked-hackers-use-artex-ai.html"
+            },
+            {
+              "title": "Cointelegraph: Black October",
+              "url": "https://cointelegraph.com/magazine/cybersecuritys-black-october-how-to-protect-yourself"
+            }
+          ]
+        },
+        {
+          "title": "Iranian-linked hackers have already tampered with US water controls this year",
+          "what": "A joint CISA/FBI/NSA/EPA/DOE advisory (April, updated July) documents Iran-affiliated hackers getting into internet-exposed industrial controllers at water, energy and local-government sites and changing operator screens. Intrusions at water utilities in New Jersey and, reportedly, Alabama followed in July and August; operators switched to manual and no one lost water service. No new US-targeted Iranian incident or advisory surfaced in October.",
+          "mechanism": "Small water systems with controllers exposed to the internet are the weak point. A successful tamper means wrong chemical dosing or pump shutdowns, which shows up for you as a boil-water notice or low pressure for a day or more. Any resumption of US strikes on Iran raises the odds of retaliation through this route.",
+          "severity": "watch",
+          "confidence": "medium",
+          "tier": "1",
+          "as_of": "Oct 29",
+          "sources": [
+            {
+              "title": "CISA joint advisory bulletin",
+              "url": "https://content.govdelivery.com/accounts/USDHSCISA/bulletins/40db871"
+            },
+            {
+              "title": "Rescana: NJ and Alabama water intrusions",
+              "url": "https://www.rescana.com/post/2026-cyberattack-analysis-iranian-linked-threats-target-internet-exposed-ot-systems-at-new-jersey-and-alabama-water-util"
+            },
+            {
+              "title": "Tom's Hardware: CISA PLC alert",
+              "url": "https://www.tomshardware.com/tech-industry/cyber-security/us-cybersecurity-agency-issues-an-urgent-alert-as-iranian-hackers-attack-critical-infrastructure-cisa-guidance-warns-organizations-to-immediately-shield-certain-programmable-logic-controllers-from-the-internet-to-thwart-future-attacks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "domain": "War, sabotage and geopolitics",
+      "summary": "No new direct threat to US infrastructure; the signal is what governments are now planning for.",
+      "items": [
+        {
+          "title": "The Pentagon is preparing bases to run 90 days without the civilian grid",
+          "what": "Under an initiative called FORTRESS, reported October 25 from documents Fox News reviewed, every major continental US base must be able to keep essential operations going for at least 90 days without outside electricity, water, fuel or communications: microgrids that can island from the public grid, portable nuclear reactors, large batteries, stockpiles and GPS-jamming protection. The Pentagon's spokesman said the next conflict will likely be fought on multiple fronts and global supply chains will break, and called the plan insurance. No specific adversary is named, and the reactor piece isn't due until 2028 or later.",
+          "mechanism": "This is the clearest statement yet that US defense planners treat a months-long civilian grid failure in wartime as a planning case, not a fringe scenario. The bases get their own power; civilian communities around them don't. It doesn't signal anything imminent, but it tells you what the worst case looks like to the people paid to imagine it.",
+          "severity": "watch",
+          "confidence": "medium",
+          "tier": "2",
+          "as_of": "Oct 26",
+          "sources": [
+            {
+              "title": "Fox News: Pentagon doomsday plan",
+              "url": "https://foxnews.com/politics/inside-pentagons-doomsday-plan-keep-america-fighting-global-war-erupts.amp"
+            },
+            {
+              "title": "Cowboy State Daily: 90-day mandate",
+              "url": "https://cowboystatedaily.com/2026/10/26/pentagon-issues-90-day-doomsday-mandate-but-f-e-warren-already-had-head-start/"
+            },
+            {
+              "title": "Fortune: bases plan for 90 days off-grid",
+              "url": "https://fortune.com/2026/10/26/pentagon-fortress-bases-90-days-off-grid-uk-be-ready-stockpile/"
+            }
+          ]
+        },
+        {
+          "title": "The US–Iran war is unresolved and still driving oil",
+          "what": "The ceasefire collapsed July 8. Qatar has handed Tehran a draft seven-day de-escalation plan; Washington says strikes remain an option. Shipping through the Strait of Hormuz is still well below pre-war levels and Brent crude was around $114 on October 27–28. Prediction markets put 18% odds on a US invasion of Iran before 2027.",
+          "mechanism": "Two routes reach you. Escalation spikes oil, which raises diesel, freight and food prices and can cause spot fuel shortages. And Iran's most-used retaliation tool against the US has been attacks on poorly secured water and energy controls (see the cyber section).",
+          "severity": "watch",
+          "confidence": "medium",
+          "tier": "3",
+          "as_of": "Oct 28",
+          "sources": [
+            {
+              "title": "AND morning brief, Oct 28",
+              "url": "https://andmagazine.substack.com/p/morning-brief-28-october-2026"
+            },
+            {
+              "title": "Thotharis: Iran–US war briefing, Oct 26",
+              "url": "https://thotharis.substack.com/p/briefing-note-67-iranus-war-26-october"
+            },
+            {
+              "title": "Polymarket via Frenzycap: US invades Iran before 2027",
+              "url": "https://www.frenzycap.com/predictions/event/polymarket/will-the-us-invade-iran-before-2027"
+            }
+          ]
+        },
+        {
+          "title": "Russia's sabotage campaign in Europe is escalating, by MI5's account",
+          "what": "On October 13 MI5's director general called Russia the top threat and said it is escalating sabotage while staying just under the level that would trigger NATO's collective defense. His examples included a cyberattack on Polish energy infrastructure, a failed attempt to put a drone bomb on a cargo aircraft in Germany, and an alleged plot against a UK drone factory. On October 1 Putin said Russia would use all weapons and forces to defend Kaliningrad. Markets gave 23% odds of a direct NATO–Russia military clash by year end, as of October 2.",
+          "mechanism": "Direct impact on a US household today is low. The escalation path is a NATO–Russia clash, which would very likely bring cyberattacks on US infrastructure as retaliation, and would push energy prices up sharply. Europe's three-day-kit campaigns (UK, Belgium, Netherlands, France, Ireland) are built around this scenario.",
+          "severity": "background",
+          "confidence": "high",
+          "tier": "2",
+          "as_of": "Oct 13",
+          "sources": [
+            {
+              "title": "Euronews: MI5 calls Russia aggressor number one",
+              "url": "https://www.euronews.com/2026/10/13/russia-remains-aggressor-number-one-uks-mi5-spy-agency-chief-warns-in-threat-update"
+            },
+            {
+              "title": "Euronews: Putin says all weapons on agenda if Kaliningrad attacked",
+              "url": "https://www.euronews.com/2026/10/02/putin-says-all-weapons-on-agenda-if-russias-kaliningrad-attacked"
+            },
+            {
+              "title": "Yellow: Polymarket NATO–Russia odds",
+              "url": "https://yellow.com/news/bitcoin-putin-kaliningrad-polymarket-clash-odds"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "domain": "Grid, fuel and winter",
+      "summary": "Fuel is the pressure you can feel now; the grid's real test is the coming winter.",
+      "items": [
+        {
+          "title": "Diesel is near record prices and East Coast stocks are thin",
+          "what": "Diesel averaged $6.28 a gallon on October 8, against $3.68 a year earlier; the record was $6.53 on September 22. Regular gas was $4.23 nationally today, the highest ever for this time of year by AAA's count, though down from $4.41 on October 1. The EIA raised its fourth-quarter Brent forecast to $105 and reported East Coast diesel and heating-oil stocks 32% below the five-year average.",
+          "mechanism": "Diesel moves nearly all freight, so its price flows into groceries within weeks. Thin stocks heading into heating season leave little cushion: a refinery outage, a cold snap or any Hormuz escalation could turn high prices into spot shortages at stations.",
+          "severity": "act",
+          "confidence": "high",
+          "tier": "2",
+          "as_of": "Oct 29",
+          "sources": [
+            {
+              "title": "AAA gas prices, October 2026",
+              "url": "https://gasprices.aaa.com/2026/10/"
+            },
+            {
+              "title": "RV Travel: highest prices for this time of year",
+              "url": "https://www.rvtravel.com/gas-prices-highest-time-year/"
+            },
+            {
+              "title": "Devdiscourse: EIA raises Q4 oil forecast",
+              "url": "https://www.devdiscourse.com/article/business/3988225-us-eia-raises-q4-oil-price-forecast-to-usd-105-amid-middle-east-supply-risks-diesel-market-tightness"
+            }
+          ]
+        },
+        {
+          "title": "A historic-strength El Niño is coming, and the Southeast grid's margin is shrinking",
+          "what": "The Climate Prediction Center has an El Niño Advisory in effect, with an 83% chance of a historic-strength event this fall and winter; NOAA's winter outlook leans wet across the South. Last winter, Winter Storm Fern knocked out power to about 500,000 customers in the TVA region; the federal review found the big power plants held up and the damage was to local lines. Separately, a review of NERC's long-term assessment flags the TVA region (which serves north Alabama) for a summer capacity shortfall by 2030 as data-center demand surges.",
+          "mechanism": "Strong El Niño winters push more storms along the Gulf. When cold air does arrive, that means more ice and wintry mix in central and north Alabama, and ice on local lines is what causes multi-day outages here. Plan for at least one this winter. The capacity squeeze is a later problem: tighter margins mean rolling blackouts become possible in extreme heat or cold within a few years.",
+          "severity": "watch",
+          "confidence": "medium",
+          "tier": "1",
+          "as_of": "Oct 29",
+          "sources": [
+            {
+              "title": "CPC ENSO diagnostic discussion",
+              "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml"
+            },
+            {
+              "title": "FERC–NERC winter 2026 review",
+              "url": "https://ferc.gov/news-events/news/ferc-nerc-review-shows-bulk-power-system-improvements-preparation-and-coordination"
+            },
+            {
+              "title": "Grid Strategies: review of NERC 2025 LTRA",
+              "url": "https://gridstrategiesllc.com/wp-content/uploads/FINAL-2025-LTRA-Review.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "domain": "Health, money and supply",
+      "summary": "Nothing acute; one large overseas outbreak worth tracking.",
+      "items": [
+        {
+          "title": "The DRC Ebola outbreak is now the second-largest on record",
+          "what": "As of October 21 there were 9,735 confirmed cases and 4,690 deaths from the Bundibugyo strain in the Democratic Republic of Congo, with nine cases in Kenya and no community spread there. There are no US cases; travelers who were in the DRC in the past 21 days can't board US-bound flights, and the CDC rates US risk as low. Separately, no human-to-human bird flu spread has been detected.",
+          "mechanism": "Low direct risk. The realistic US effect is a single imported case straining one region's hospitals and triggering local disruption. Continued growth or spread to a major transit hub would change that.",
+          "severity": "background",
+          "confidence": "high",
+          "tier": "1",
+          "as_of": "Oct 21",
+          "sources": [
+            {
+              "title": "Contagion Live: DRC outbreak reaches 9,735 cases",
+              "url": "https://www.contagionlive.com/view/ebola-update-drc-outbreak-reaches-9735-cases-second-largest-on-record"
+            },
+            {
+              "title": "ECDC threats report, week 42",
+              "url": "https://www.ecdc.europa.eu/sites/default/files/documents/communicable-disease-threats-report-week-42-2026.pdf"
+            }
+          ]
+        },
+        {
+          "title": "Banks and card networks are steady; food inflation is concentrated in beef",
+          "what": "No bank failures in October so far (six in 2026, the latest a small California bank on September 25, with deposits covered). No major US card, ATM or payment-network outage this month. Food prices overall rose 2.7% over the year to August; beef rose 5.9% and the USDA projects 9.4% for the year because of a small cattle herd.",
+          "mechanism": "No current threat to your access to money. The exposure is the AI-flaw wave above: payment processors and bank apps are high-value targets, so a short card or app outage is the more likely disruption than a failure.",
+          "severity": "background",
+          "confidence": "medium",
+          "tier": "2",
+          "as_of": "Oct 29",
+          "sources": [
+            {
+              "title": "Axis Intelligence: 2026 bank failures",
+              "url": "https://axis-intelligence.com/bank-failures/"
+            },
+            {
+              "title": "farmdoc daily: food inflation and beef",
+              "url": "https://farmdocdaily.illinois.edu/2026/10/food-inflation-and-the-outlook-for-beef-prices.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "alabama": [
+    {
+      "title": "Power is normal statewide",
+      "what": "913 of 2,618,869 tracked customers were without power this morning (0.03%), 805 of them Alabama Power, most in Jefferson County. No Alabama Power, TVA or co-op incidents, conservation alerts or cyber incidents were reported this month.",
+      "mechanism": "Background outages only. A sustained count in the tens of thousands without a storm would be the signal to look closer.",
+      "severity": "background",
+      "confidence": "high",
+      "tier": "2",
+      "as_of": "Oct 29, morning",
+      "sources": [
+        {
+          "title": "PowerOutage.us: Alabama",
+          "url": "https://poweroutage.us/area/state/alabama"
+        }
+      ]
+    },
+    {
+      "title": "Weather is benign for the next week; hurricane season is effectively over",
+      "what": "Dry and warm (upper 70s to low 80s) through Friday with patchy dense fog; showers Saturday night into Sunday (60–80% chance, mostly under half an inch); another front around Wednesday, November 4. Severe-weather potential is low and no watches or warnings are in effect. The Hurricane Center expects no tropical storm formation in the Atlantic or Gulf in the next seven days.",
+      "mechanism": "No weather-driven outage risk this week.",
+      "severity": "background",
+      "confidence": "high",
+      "tier": "1",
+      "as_of": "Oct 29",
+      "sources": [
+        {
+          "title": "NWS Birmingham",
+          "url": "https://www.weather.gov/bmx/"
+        },
+        {
+          "title": "National Hurricane Center",
+          "url": "https://www.nhc.noaa.gov/"
+        }
+      ]
+    },
+    {
+      "title": "Alabama water systems have been probed this year",
+      "what": "After the FBI warned in late July that controllers at water utilities in at least seven states were under attack, Central Alabama Water said it was not hit and was working with CISA. A security firm separately reports an unnamed Alabama water utility among July–August intrusions in which operators switched to manual and kept water flowing. Accounts differ on details; no Alabama service loss has been reported.",
+      "mechanism": "If a local system is tampered with, the first sign for you is a boil-water notice or low pressure. Stored drinking water covers that gap.",
+      "severity": "watch",
+      "confidence": "low",
+      "tier": "2",
+      "as_of": "Aug 2026",
+      "sources": [
+        {
+          "title": "WBRC: Central Alabama Water coordinating with CISA",
+          "url": "https://www.wbrc.com/2026/07/31/central-alabama-water-coordinating-with-cybersecurity-agency-fbi-warns-about-attacks-water-utilities-7-states/"
+        },
+        {
+          "title": "WBHM: is Central Alabama Water at risk?",
+          "url": "https://www.wbhm.org/local-news/2026-08-06/hackers-have-hit-water-utilities-across-the-country-is-central-alabama-water-at-risk"
+        },
+        {
+          "title": "Rescana: NJ and Alabama water intrusions",
+          "url": "https://www.rescana.com/post/2026-cyberattack-analysis-iranian-linked-threats-target-internet-exposed-ot-systems-at-new-jersey-and-alabama-water-util"
+        }
+      ]
+    },
+    {
+      "title": "No Alabama government sites reported offline over the PHP flaws",
+      "what": "European governments, UK councils and at least one US state agency (Idaho Fish and Game) pulled sites offline as a precaution. No Alabama state or city site was found offline. State and county web services run heavily on PHP and are a likely place for short, unannounced outages over the next few weeks.",
+      "mechanism": "Expect possible short outages of online services like tag renewals, permits and benefits portals. Paper copies and doing time-sensitive renewals early remove the dependency.",
+      "severity": "background",
+      "confidence": "medium",
+      "tier": "2",
+      "as_of": "Oct 29",
+      "sources": [
+        {
+          "title": "Nextgov: PHP flaws draw millions of hacking attempts",
+          "url": "https://www.nextgov.com/cybersecurity/2026/10/php-flaws-draw-millions-hacking-attempts-amid-global-push-fixes/416771/"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "PowerOutage.us, Alabama",
+      "reading": "913 out of 2.62M customers (0.03%)",
+      "note": "Normal background is hundreds to low thousands.",
+      "as_of": "Oct 29, 9 AM",
+      "url": "https://poweroutage.us/area/state/alabama"
+    },
+    {
+      "name": "PowerOutage.us, US total",
+      "reading": "No current figure",
+      "note": "The national page returned an old cached copy; retrying next run.",
+      "as_of": "Oct 29",
+      "url": "https://poweroutage.us/"
+    },
+    {
+      "name": "NOAA space weather",
+      "reading": "Quiet: max Kp 3, no geomagnetic storm expected",
+      "note": "5% daily chance of a minor radio blackout; 1% chance of a radiation storm. No watches.",
+      "as_of": "Oct 28",
+      "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt"
+    },
+    {
+      "name": "CISA exploited-vulnerability list",
+      "reading": "PHP2Shell added Oct 26; federal patch deadline today",
+      "note": "Confirms real-world exploitation, not just scanning.",
+      "as_of": "Oct 26",
+      "url": "https://hackread.com/cisa-confirm-php2shell-exploit-federal-agencies-patch/"
+    },
+    {
+      "name": "VECTR-CAST cyber threat level",
+      "reading": "3 of 5, Elevated (top of band)",
+      "note": "Independent forecaster; by its own scoring about half its resolved calls come true.",
+      "as_of": "Oct 26",
+      "url": "https://cyberwarrior76.substack.com/p/vectr-cast-14-day-cyber-threat-forecast-b95"
+    },
+    {
+      "name": "Pentagon Pizza Index",
+      "reading": "No reported October spike",
+      "note": "Live readings aren't machine-readable; last reported spikes were in January and March–April 2026. A novelty signal: it never moves the level alone.",
+      "as_of": "Oct 29",
+      "url": "https://www.pizzint.watch/about"
+    },
+    {
+      "name": "Polymarket: US invades Iran before 2027",
+      "reading": "18%",
+      "note": "Crowd betting odds, not a forecast from experts.",
+      "as_of": "~Oct 29",
+      "url": "https://www.frenzycap.com/predictions/event/polymarket/will-the-us-invade-iran-before-2027"
+    },
+    {
+      "name": "Polymarket: China invades Taiwan in 2026",
+      "reading": "2%",
+      "note": "October drills were coastal live-fire, not a blockade rehearsal.",
+      "as_of": "~Oct 29",
+      "url": "https://www.frenzycap.com/predictions/event/polymarket/will-china-invade-taiwan-before-2027"
+    },
+    {
+      "name": "Polymarket: NATO–Russia clash by Dec 31",
+      "reading": "23%",
+      "note": "Stale: last found reading is from Oct 2, just after Putin's Kaliningrad warning.",
+      "as_of": "Oct 2",
+      "url": "https://yellow.com/news/bitcoin-putin-kaliningrad-polymarket-clash-odds"
+    },
+    {
+      "name": "AAA national gas average",
+      "reading": "$4.23 regular",
+      "note": "Record for this time of year; down from $4.41 on Oct 1.",
+      "as_of": "Oct 29",
+      "url": "https://gasprices.aaa.com/2026/10/"
+    },
+    {
+      "name": "Doomsday Clock",
+      "reading": "85 seconds to midnight",
+      "note": "Set January 27, 2026, the closest ever. Updated once a year.",
+      "as_of": "Jan 2026",
+      "url": "https://news.uchicago.edu/story/doomsday-clock-ticks-down-85-seconds-midnight-2026-closest-ever-apocalypse"
+    }
+  ],
+  "slow_burns": [
+    {
+      "threat": "AI-accelerated vulnerability discovery",
+      "trend": "rising",
+      "horizon": "Weeks to months",
+      "note": "Flaws found and exploited faster than patching; expect more frequent short outages of digital services."
+    },
+    {
+      "threat": "Fuel supply and the Iran war",
+      "trend": "steady",
+      "horizon": "Now through winter",
+      "note": "Prices off their September peak but diesel stocks thin; any escalation reverses that fast."
+    },
+    {
+      "threat": "Ice-storm season under a strong El Niño",
+      "trend": "new",
+      "horizon": "December to February",
+      "note": "Higher odds of icing in central and north Alabama; local line damage means multi-day outages."
+    },
+    {
+      "threat": "Cold-chain sabotage copycats",
+      "trend": "new",
+      "horizon": "Unknown",
+      "note": "The French attack used old, exposed controllers that exist worldwide."
+    },
+    {
+      "threat": "Russian hybrid campaign spilling past Europe",
+      "trend": "rising",
+      "horizon": "Months",
+      "note": "MI5 says sabotage is escalating; a NATO clash would bring retaliation against US infrastructure."
+    },
+    {
+      "threat": "Southeast grid capacity vs. data-center demand",
+      "trend": "rising",
+      "horizon": "2027–2030",
+      "note": "TVA region flagged for a summer shortfall by 2030; rolling blackouts become possible in extremes."
+    },
+    {
+      "threat": "DRC Ebola outbreak",
+      "trend": "rising",
+      "horizon": "Months",
+      "note": "Second-largest on record; watch for spread to transit hubs."
+    },
+    {
+      "threat": "US midterms, November 3",
+      "trend": "new",
+      "horizon": "Next week",
+      "note": "Officials warn of AI phishing and attacks on election websites, not on infrastructure."
+    }
+  ],
+  "calmer": [
+    "No real organization has confirmed a PHP2Shell break-in. Sophos and Palo Alto's Unit 42 both retracted early claims, and two large response firms report no successful exploitation at their customers.",
+    "Most of the October 21 'outages' were sites switched off on purpose for under a day; most Dutch sites were back within 24 hours.",
+    "PHP runs websites and portals, not the systems that control power plants or water treatment.",
+    "No confirmed disruption to US power, water, telecom, fuel or payments was found for October 15–29. This year's US water intrusions caused no loss of service.",
+    "Storm-0940's campaign looks like espionage and access, not sabotage.",
+    "No new federal warning about grid or water pre-positioning was issued in October.",
+    "European officials judged in June that most recent Baltic and North Sea cable breaks were accidents, and no cable cut affected the US or allies this month.",
+    "Every Alabama reading (outages, weather, tropics, space weather) is at baseline."
+  ],
+  "tripwires": {
+    "up": [
+      "A confirmed cyberattack causing an outage at a US utility, hospital system or state government, especially in the Southeast.",
+      "A CISA emergency directive or joint federal warning about active pre-positioning in the grid or water systems.",
+      "US strikes on Iran resume or Hormuz closes: Brent above $130, a new diesel record, or Iranian cyber retaliation.",
+      "A US copy of the French refrigeration attack on grocery chains.",
+      "An ice storm warning or a moderate/high severe-weather risk for Alabama, or a severe (G4+) geomagnetic storm watch.",
+      "A direct NATO–Russia military clash."
+    ],
+    "down": [
+      "Two weeks of high PHP patch uptake with no confirmed real-world compromises.",
+      "A credible Iran de-escalation (the Qatar plan accepted), Brent under $90 and diesel under $5.",
+      "The pace of AI-found critical flaws and emergency patches falls back toward normal."
+    ]
+  }
+}
