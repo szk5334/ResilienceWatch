@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Resilience Watch</title>
+<meta name="description" content="Daily OSINT briefing on threats to power, water, communications, fuel and supply — US and Alabama.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E9ECEE; --panel:#F5F7F8; --ink:#1B2A38; --muted:#56656F; --rule:#C3CCD2;
+  --signal:#F2C200; --signal-ink:#1B2A38;
+  --l1:#2E7D5B; --l2:#3D6E99; --l3:#E0A800; --l4:#D2691E; --l5:#C0321E;
+  --act:#C0321E; --watch:#E0A800; --bg-item:#3D6E99;
+  --display:"Barlow Condensed",system-ui,sans-serif;
+  --body:"Literata",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#111B24;--panel:#172430;--ink:#E4EAEE;--muted:#9AA8B2;--rule:#2C3C49;
+    --l2:#6E9CC6;--bg-item:#6E9CC6;}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.62 var(--body);}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:2px}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+.wrap{max-width:44rem;margin:0 auto;padding:max(1rem,env(safe-area-inset-top)) 1rem 4rem}
+
+/* masthead */
+.mast{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;border-bottom:2px solid var(--ink);padding-bottom:.4rem}
+.mast h1{font:700 1.35rem/1 var(--display);margin:0;letter-spacing:.01em}
+.stamp{font:500 .95rem/1.2 var(--display);color:var(--muted);text-align:right}
+
+/* condition strip — the one bold element */
+.strip{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin:1.25rem 0 .5rem}
+.seg{height:3.1rem;background:var(--panel);border:1px solid var(--rule);display:flex;align-items:flex-end;padding:.25rem .35rem;
+  font:600 .8rem/1 var(--display);color:var(--muted)}
+.seg.on{color:#fff;border-color:transparent;height:4.4rem;align-self:end;font-size:.95rem}
+.seg.on[data-l="3"]{color:var(--signal-ink)}
+.strip{align-items:end}
+.level{display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap;margin:.75rem 0 0}
+.level-name{font:700 clamp(2.6rem,11vw,4.2rem)/.9 var(--display);margin:0;letter-spacing:-.005em}
+.level-meta{font:500 1.05rem/1.3 var(--display);color:var(--muted)}
+.headline{font:600 clamp(1.45rem,5vw,1.9rem)/1.15 var(--display);margin:1.1rem 0 .5rem}
+.bottom{margin:0 0 .5rem}
+.why{color:var(--muted);font-size:.95rem;margin:.25rem 0 0}
+
+/* history blocks */
+.hist{margin:1.25rem 0 0}
+.hist-row{display:flex;gap:2px;align-items:flex-end;height:1.6rem}
+.hist-row span{flex:1 1 0;max-width:1.1rem;min-width:4px}
+.hist-cap{font:500 .85rem/1.3 var(--display);color:var(--muted);margin-top:.3rem;display:flex;justify-content:space-between}
+
+/* sections */
+section{margin-top:2.4rem}
+h2{font:700 1.5rem/1.1 var(--display);margin:0 0 .2rem;padding-top:.6rem;border-top:1px solid var(--rule)}
+.sub{color:var(--muted);font-size:.92rem;margin:0 0 1rem}
+.actions{background:var(--signal);color:var(--signal-ink);padding:1rem 1.1rem 1rem 1.1rem}
+.actions h2{border:0;padding:0;margin-bottom:.5rem}
+.actions ol{margin:0;padding-left:1.3rem}
+.actions li{margin:.3rem 0}
+
+.item{border-left:4px solid var(--bg-item);padding:.1rem 0 .1rem .9rem;margin:0 0 1.5rem}
+.item[data-sev="act"]{border-left-color:var(--act)}
+.item[data-sev="watch"]{border-left-color:var(--watch)}
+.item h3{font:600 1.22rem/1.2 var(--display);margin:0 0 .3rem}
+.item p{margin:.35rem 0}
+.mech{font-size:.95rem}
+.mech b,.k{font:600 .95rem/1 var(--display);letter-spacing:.01em}
+.tags{font:500 .9rem/1.4 var(--display);color:var(--muted);margin-top:.35rem}
+.tags .conf{color:var(--ink)}
+.srcs{font-size:.88rem;margin:.3rem 0 0;padding:0;list-style:none}
+.srcs li{display:inline}
+.srcs li+li::before{content:" / ";color:var(--muted)}
+
+/* signal board */
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th{font:600 .95rem/1.2 var(--display);text-align:left;color:var(--muted);border-bottom:2px solid var(--ink);padding:.4rem .5rem .4rem 0}
+td{border-bottom:1px solid var(--rule);padding:.55rem .5rem .55rem 0;vertical-align:top}
+td.sig{font:600 1rem/1.25 var(--display);white-space:nowrap}
+td .note{display:block;color:var(--muted);font-size:.86rem;margin-top:.15rem}
+
+.trend{font:700 1rem/1 var(--display)}
+.trend[data-t="rising"]{color:var(--act)} .trend[data-t="falling"]{color:var(--l1)}
+
+.trip{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr));gap:1.25rem}
+.trip h3{font:600 1.1rem/1.2 var(--display);margin:0 0 .3rem}
+.trip ul,.calm ul{margin:0;padding-left:1.15rem}
+.trip li,.calm li{margin:.35rem 0}
+
+.past{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+select{font:500 1rem var(--display);padding:.35rem .5rem;background:var(--panel);color:var(--ink);border:1px solid var(--rule)}
+.foot{margin-top:3rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--rule);padding-top:.8rem}
+.err{background:var(--panel);border-left:4px solid var(--act);padding:1rem}
+.stale{background:var(--act);color:#fff;font:600 1rem/1.3 var(--display);padding:.5rem .75rem;margin-top:1rem}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:no-preference){
+  .seg.on{animation:lift .5s cubic-bezier(.2,.8,.2,1) both}
+  @keyframes lift{from{height:3.1rem}to{height:4.4rem}}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <h1>Resilience Watch</h1>
+    <div class="stamp" id="stamp">Loading report</div>
+  </header>
+
+  <main id="report" aria-live="polite">
+    <div class="strip" id="strip" aria-hidden="true"></div>
+    <div class="level">
+      <p class="level-name" id="levelName"></p>
+      <span class="level-meta" id="levelMeta"></span>
+    </div>
+    <div id="staleNote" class="stale" hidden></div>
+    <p class="headline" id="headline"></p>
+    <p class="bottom" id="bottom"></p>
+    <p class="why" id="why"></p>
+
+    <div class="hist" id="hist" hidden>
+      <div class="hist-row" id="histRow"></div>
+      <div class="hist-cap"><span id="histFrom"></span><span>Level history</span><span id="histTo"></span></div>
+    </div>
+
+    <section class="actions" id="actionsSec" hidden>
+      <h2>What to do at this level</h2>
+      <ol id="actions"></ol>
+    </section>
+
+    <div id="sections"></div>
+
+    <section id="alSec" hidden>
+      <h2>Alabama</h2>
+      <p class="sub">Power, water, weather and state systems close to home.</p>
+      <div id="alabama"></div>
+    </section>
+
+    <section id="sigSec" hidden>
+      <h2>Signal board</h2>
+      <p class="sub">Raw readings from outside trackers, each with what it does and doesn't tell you.</p>
+      <table><thead><tr><th scope="col">Signal</th><th scope="col">Reading</th></tr></thead><tbody id="signals"></tbody></table>
+    </section>
+
+    <section id="slowSec" hidden>
+      <h2>Slow burns</h2>
+      <p class="sub">Developing threats that aren't acute yet but could become life-disrupting.</p>
+      <table><thead><tr><th scope="col">Threat</th><th scope="col">Trend</th><th scope="col">Horizon</th></tr></thead><tbody id="slow"></tbody></table>
+    </section>
+
+    <section id="calmSec" class="calm" hidden>
+      <h2>Evidence against escalation</h2>
+      <p class="sub">Reported because it's true, not to reassure.</p>
+      <ul id="calm"></ul>
+    </section>
+
+    <section id="tripSec" hidden>
+      <h2>Tripwires</h2>
+      <div class="trip">
+        <div><h3>Would raise the level</h3><ul id="up"></ul></div>
+        <div><h3>Would lower it</h3><ul id="down"></ul></div>
+      </div>
+    </section>
+
+    <section id="pastSec">
+      <h2>Past reports</h2>
+      <div class="past">
+        <label for="past">Show the report from</label>
+        <select id="past"><option value="">Latest</option></select>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Compiled daily from open sources by an automated research agent. Levels follow the
+    <a href="https://github.com/szk5334/ResilienceWatch/blob/main/PROTOCOL.md">published protocol</a>.
+    Claims are linked to their sources; check anything you plan to act on.
+  </footer>
+</div>
+
+<script>
+(() => {
+  const NAMES = {1:"Normal",2:"Guarded",3:"Elevated",4:"High",5:"Severe"};
+  const COLOR = l => `var(--l${l})`;
+  const $ = id => document.getElementById(id);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const safeUrl = u => { try { const x = new URL(u); return (x.protocol === "https:" || x.protocol === "http:") ? x.href : null; } catch { return null; } };
+  const fmtDate = iso => new Date(iso).toLocaleString("en-US",{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit",timeZone:"America/Chicago",timeZoneName:"short"});
+  const noCache = u => u + (u.includes("?") ? "&" : "?") + "t=" + Date.now();
+
+  function sourceList(srcs){
+    const ul = el("ul","srcs");
+    (srcs||[]).forEach(s => {
+      const href = safeUrl(s.url); const li = el("li");
+      if (href){ const a = el("a",null,s.title||new URL(href).hostname); a.href = href; a.rel="noopener"; a.target="_blank"; li.append(a); }
+      else li.textContent = s.title||"";
+      ul.append(li);
+    });
+    return ul;
+  }
+
+  function itemNode(it){
+    const d = el("article","item"); d.dataset.sev = it.severity || "background";
+    d.append(el("h3",null,it.title));
+    if (it.what) d.append(el("p",null,it.what));
+    if (it.mechanism){ const p = el("p","mech"); p.append(el("b",null,"How it reaches you: "), document.createTextNode(it.mechanism)); d.append(p); }
+    const tags = el("div","tags");
+    const bits = [];
+    if (it.confidence) { const c = el("span","conf","Confidence: " + it.confidence); tags.append(c); bits.push(1); }
+    if (it.tier) { if (bits.length) tags.append(document.createTextNode(", ")); tags.append(document.createTextNode("source tier " + it.tier)); }
+    if (it.as_of) { tags.append(document.createTextNode(", as of " + it.as_of)); }
+    d.append(tags);
+    if (it.sources && it.sources.length) d.append(sourceList(it.sources));
+    return d;
+  }
+
+  function render(r, hist, isLatest){
+    const lvl = Number(r.level);
+    // strip
+    const strip = $("strip"); strip.replaceChildren();
+    for (let i=1;i<=5;i++){
+      const s = el("div","seg", `${i} ${NAMES[i]}`); s.dataset.l = i;
+      if (i===lvl){ s.classList.add("on"); s.style.background = COLOR(i); }
+      strip.append(s);
+    }
+    $("levelName").textContent = NAMES[lvl] || "Unknown";
+    $("levelName").style.color = lvl===3 ? "var(--ink)" : COLOR(lvl);
+    const prev = Number(r.prev_level);
+    $("levelMeta").textContent = `Level ${lvl} of 5` + (prev ? (prev===lvl ? ", unchanged" : (prev<lvl ? `, up from ${NAMES[prev]}` : `, down from ${NAMES[prev]}`)) : "");
+    $("stamp").textContent = r.generated_at ? fmtDate(r.generated_at) : "";
+    $("headline").textContent = r.headline || "";
+    $("bottom").textContent = r.bottom_line || "";
+    $("why").textContent = r.change_reason ? ("Level reasoning: " + r.change_reason) : "";
+
+    // staleness
+    const ageH = r.generated_at ? (Date.now() - new Date(r.generated_at)) / 36e5 : 0;
+    const st = $("staleNote");
+    if (isLatest && ageH > 36){ st.hidden = false; st.textContent = `This report is ${Math.round(ageH/24)} day(s) old — the daily run may have failed. Don't treat it as current.`; }
+    else st.hidden = true;
+
+    // history
+    if (hist && hist.length){
+      const last = hist.slice(-30); const row = $("histRow"); row.replaceChildren();
+      last.forEach(h => { const b = el("span"); b.style.background = COLOR(h.level); b.style.height = (20 + h.level*16) + "%"; b.title = `${h.date}: ${NAMES[h.level]}`; row.append(b); });
+      $("histFrom").textContent = last[0].date; $("histTo").textContent = last[last.length-1].date; $("hist").hidden = false;
+    }
+
+    // actions
+    const acts = $("actions"); acts.replaceChildren();
+    (r.actions||[]).forEach(a => acts.append(el("li",null,a)));
+    $("actionsSec").hidden = !(r.actions||[]).length;
+
+    // domain sections
+    const secs = $("sections"); secs.replaceChildren();
+    (r.sections||[]).forEach(s => {
+      if (!s.items || !s.items.length) return;
+      const sec = el("section"); sec.append(el("h2",null,s.domain));
+      if (s.summary) sec.append(el("p","sub",s.summary));
+      s.items.forEach(it => sec.append(itemNode(it)));
+      secs.append(sec);
+    });
+
+    // alabama
+    const al = $("alabama"); al.replaceChildren();
+    (r.alabama||[]).forEach(it => al.append(itemNode(it)));
+    $("alSec").hidden = !(r.alabama||[]).length;
+
+    // signals
+    const sg = $("signals"); sg.replaceChildren();
+    (r.signals||[]).forEach(s => {
+      const tr = el("tr");
+      const a = el("td","sig"); const href = safeUrl(s.url);
+      if (href){ const l = el("a",null,s.name); l.href = href; l.rel="noopener"; l.target="_blank"; a.append(l); } else a.textContent = s.name;
+      const b = el("td"); b.append(document.createTextNode(s.reading || "No reading"));
+      if (s.note) b.append(el("span","note", s.note + (s.as_of ? ` (${s.as_of})` : "")));
+      tr.append(a,b); sg.append(tr);
+    });
+    $("sigSec").hidden = !(r.signals||[]).length;
+
+    // slow burns
+    const sl = $("slow"); sl.replaceChildren();
+    const arrow = {rising:"Rising",steady:"Steady",falling:"Easing",new:"New"};
+    (r.slow_burns||[]).forEach(s => {
+      const tr = el("tr");
+      const a = el("td"); a.append(el("span","k",s.threat)); if (s.note) a.append(el("span","note",s.note));
+      const t = el("td"); const tt = el("span","trend",arrow[s.trend]||s.trend||""); tt.dataset.t = s.trend||""; t.append(tt);
+      const h = el("td",null,s.horizon||"");
+      tr.append(a,t,h); sl.append(tr);
+    });
+    $("slowSec").hidden = !(r.slow_burns||[]).length;
+
+    // calm
+    const cm = $("calm"); cm.replaceChildren();
+    (r.calmer||[]).forEach(c => cm.append(el("li",null,c)));
+    $("calmSec").hidden = !(r.calmer||[]).length;
+
+    // tripwires
+    const up = $("up"), dn = $("down"); up.replaceChildren(); dn.replaceChildren();
+    ((r.tripwires||{}).up||[]).forEach(t => up.append(el("li",null,t)));
+    ((r.tripwires||{}).down||[]).forEach(t => dn.append(el("li",null,t)));
+    $("tripSec").hidden = !(((r.tripwires||{}).up||[]).length || ((r.tripwires||{}).down||[]).length);
+  }
+
+  async function getJSON(u){ const res = await fetch(noCache(u)); if (!res.ok) throw new Error(`${u} returned ${res.status}`); return res.json(); }
+
+  let history = [];
+  async function load(date){
+    try {
+      const r = await getJSON(date ? `data/archive/${encodeURIComponent(date)}.json` : "data/latest.json");
+      render(r, history, !date);
+    } catch (e) {
+      const m = $("report"); const box = el("div","err");
+      box.append(el("strong",null,"The report didn't load. "), document.createTextNode(e.message + ". Refresh the page; if it persists, the latest run may not have published."));
+      m.prepend(box);
+    }
+  }
+
+  (async () => {
+    try { history = await getJSON("data/history.json"); } catch { history = []; }
+    const sel = $("past");
+    [...history].reverse().forEach(h => { const o = new Option(`${h.date}: ${NAMES[h.level]}`, h.date); sel.append(o); });
+    sel.addEventListener("change", () => load(sel.value));
+    load("");
+  })();
+})();
+</script>
+</body>
+</html>
